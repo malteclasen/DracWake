@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracWake.Core", "DracWake.Core\DracWake.Core.csproj", "{F63D8BFF-1BCC-49DF-A4D8-DFAC7FA245AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracWake.Core.Tests", "DracWake.Core.Tests\DracWake.Core.Tests.csproj", "{E3C84C86-AE9C-4DD6-B8D9-364CB9A26C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracWake.Console", "DracWake.Console\DracWake.Console.csproj", "{4B790B47-C995-4E60-9FD7-1C2F437399D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F63D8BFF-1BCC-49DF-A4D8-DFAC7FA245AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63D8BFF-1BCC-49DF-A4D8-DFAC7FA245AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63D8BFF-1BCC-49DF-A4D8-DFAC7FA245AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63D8BFF-1BCC-49DF-A4D8-DFAC7FA245AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3C84C86-AE9C-4DD6-B8D9-364CB9A26C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3C84C86-AE9C-4DD6-B8D9-364CB9A26C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3C84C86-AE9C-4DD6-B8D9-364CB9A26C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3C84C86-AE9C-4DD6-B8D9-364CB9A26C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B790B47-C995-4E60-9FD7-1C2F437399D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B790B47-C995-4E60-9FD7-1C2F437399D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B790B47-C995-4E60-9FD7-1C2F437399D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B790B47-C995-4E60-9FD7-1C2F437399D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
