@@ -9,6 +9,21 @@ namespace DracWake.Core
 {
     public class WebClient : IWebClient, IDisposable
     {
+        static WebClient()
+        {
+            InstallSslValidator();
+        }
+
+        private static void InstallSslValidator()
+        {
+            var defaultValidator = System.Net.ServicePointManager.ServerCertificateValidationCallback;
+            System.Net.ServicePointManager.ServerCertificateValidationCallback =
+                (request, certificate, chain, sslPolicyErrors) => 
+                    certificate.Subject.Contains("O=DO_NOT_TRUST, OU=Created by http://www.fiddler2.com") 
+                    || (certificate.Subject == "CN=DRAC5 default certificate, OU=Remote Access Group, O=Dell Inc., L=Round Rock, S=Texas, C=US") 
+                    || (defaultValidator != null && defaultValidator(request, certificate, chain, sslPolicyErrors));
+        }
+
         private CookieAwareWebClient _client = new CookieAwareWebClient();
 
         public async Task<string> Get(Uri uri)
