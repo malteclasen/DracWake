@@ -10,12 +10,10 @@ namespace DracWake.Console
     {
         static void Main(string[] args)
         {
-            using (var webClient = new Core.WebClient())
-            {
-                var controller = new Core.Controller(webClient, new Uri("https://192.168.1.24"));
-                //controller.PowerOn();
-                System.Console.WriteLine("PowerStatus: " + controller.GetPowerState());
-            }
+			var webClient = new Core.WebClient();
+            var controller = new Core.Controller(webClient, new Uri("https://192.168.1.24"));
+            //controller.PowerOn();
+            System.Console.WriteLine("PowerStatus: " + controller.GetPowerState());
         }
     }
 }
