@@ -63,6 +63,8 @@ namespace DracWake.Core.Tests
             var fixture = new Fixture().Customize(new Ploeh.AutoFixture.AutoMoq.AutoMoqCustomization());
             fixture.Register<IWebClient>(() => new MockWebClient());
             var controller = fixture.CreateAnonymous<Core.Controller>();
+			controller.Username = "root";
+			controller.Password = "calvin";
 
             controller.Invoking(c => c.PowerOn()).ShouldNotThrow();
         }
@@ -73,6 +75,8 @@ namespace DracWake.Core.Tests
             var fixture = new Fixture().Customize(new Ploeh.AutoFixture.AutoMoq.AutoMoqCustomization());
             fixture.Register<IWebClient>(() => new MockWebClient());
             var controller = fixture.CreateAnonymous<Core.Controller>();
+			controller.Username = "root";
+			controller.Password = "calvin";
 
             controller.GetPowerState().Should().Be(PowerState.Off);
         }

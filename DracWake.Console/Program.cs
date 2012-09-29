@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommandLine;
+using CommandLine.Text;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +12,21 @@ namespace DracWake.Console
     {
         static void Main(string[] args)
         {
-			var webClient = new Core.WebClient();
-            var controller = new Core.Controller(webClient, new Uri("https://192.168.1.24"));
-            //controller.PowerOn();
-            System.Console.WriteLine("PowerStatus: " + controller.GetPowerState());
+			var options = new Options();
+			if (CommandLineParser.Default.ParseArguments(args, options))
+			{
+				var webClient = new Core.WebClient();
+				var controller = new Core.Controller(webClient, new Uri("https://" + options.Host));
+				switch (options.Command)
+				{
+					case Command.GetPowerState:
+						System.Console.WriteLine("PowerStatus: " + controller.GetPowerState());
+						break;
+					case Command.PowerOn:
+						controller.PowerOn();
+						break;
+				}
+			}
         }
     }
 }

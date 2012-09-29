@@ -9,27 +9,26 @@ using System.Xml.Linq;
 
 namespace DracWake.Core
 {
-	public enum PowerState
-	{
-		On,
-		Off
-	}
-
 	public class Controller
 	{
 		private readonly IWebClient _webClient;
 		private readonly Uri _baseAddress;
 
+		public string Username { get; set; }
+		public string Password { get; set; }
+
 		public Controller(IWebClient webClient, Uri baseAddress)
 		{
 			_webClient = webClient;
 			_baseAddress = baseAddress;
+			Username = "root";
+			Password = "calvin";
 		}
 
 		private async Task Login()
 		{
 			var loginPage = await _webClient.Get(new Uri(_baseAddress, "/cgi-bin/webcgi/login"));
-			var indexPage = await _webClient.Post(new Uri(_baseAddress, "/cgi-bin/webcgi/login"), Encoding.UTF8.GetBytes("user=root&password=calvin"));
+			var indexPage = await _webClient.Post(new Uri(_baseAddress, "/cgi-bin/webcgi/login"), Encoding.UTF8.GetBytes("user="+Username+"&password="+Password));
 
 			if (!indexPage.Contains("main_en.xsl"))
 				throw new Exception("login failed, expected redirect to index page");
