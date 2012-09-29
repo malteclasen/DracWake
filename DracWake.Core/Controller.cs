@@ -63,9 +63,9 @@ namespace DracWake.Core
 
 		private PowerState ParsePowerState(string xmlPage)
 		{
-			var doc = XDocument.Parse(xmlPage);
-			var property = doc.Descendants("property").Where(n => n.Attributes().Any(a => a.Name == "name" && a.Value == "PowerStatus"));
-			var rawState = property.First().Descendants("value").First().FirstNode.ToString();
+			var xml = SimpleXmlDocument.Parse(xmlPage);
+			string rawState = xml.@object.property.value.Value;
+
 			switch (rawState)
 			{
 				case "ON": return PowerState.On;
