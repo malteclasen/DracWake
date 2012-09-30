@@ -64,7 +64,7 @@ namespace DracWake.Core
 		private PowerState ParsePowerState(string xmlPage)
 		{
 			var xml = SimpleXmlDocument.Parse(xmlPage);
-			string rawState = xml.@object.property.value.Value;
+			string rawState = xml.@object.propertyWithName("PowerStatus").value.Value;
 
 			switch (rawState)
 			{

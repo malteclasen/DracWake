@@ -2,3 +2,5 @@
 */obj/*
 *.suo
 */*.user
+*.user
+*.cache

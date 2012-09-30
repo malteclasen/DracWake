@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -59,6 +60,27 @@ namespace DracWake.Core
 						result = new SimpleXmlElement(element);
 					break;
 			}
+
+			return result != null;
+		}
+
+		public override bool TryInvokeMember(System.Dynamic.InvokeMemberBinder binder, object[] args, out object result)
+		{
+			var parser = new Regex("(?<element>.*)With(?<attribute>.*)");
+			var match = parser.Match(binder.Name);
+			var elementName = match.Groups["element"].Captures.Cast<Capture>().First().Value;
+			var attributeName = match.Groups["attribute"].Captures.Cast<Capture>().First().Value;
+			var attributeValue = (string)args[0];
+
+			var element = _element.Elements(elementName).Where(e =>
+			{
+				var attribute = e.Attributes().First(a => string.Compare(a.Name.LocalName, attributeName, StringComparison.InvariantCultureIgnoreCase) == 0);
+				return attribute.Value == attributeValue;
+			}).FirstOrDefault();
+			if (element == null)
+				result = null;
+			else
+				result = new SimpleXmlElement(element);
 
 			return result != null;
 		}

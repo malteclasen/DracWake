@@ -22,7 +22,7 @@ namespace DracWake.Core.Tests
 </drac>";
 			dynamic simpleXml = new SimpleXmlDocument(XDocument.Parse(code));
 			Assert.That(simpleXml.@object, Is.Not.Null);
-			Assert.That(simpleXml.@object.property.value.Value, Is.EqualTo("OFF"));
+			Assert.That(simpleXml.@object.propertyWithName("PowerStatus").value.Value, Is.EqualTo("OFF"));
 		}
 
 		[Test]
