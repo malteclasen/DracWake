@@ -41,16 +41,16 @@ namespace DracWake.Core
 
 		private async Task<T> ExecuteLoggedIn<T>(Func<Task<T>> action)
 		{
+			await Login();
 			try
 			{
-				await Login();
 				var result = await action();
-				await Logout();
+				await Logout();;
 				return result;
 			}
 			catch
 			{
-				Logout().RunSynchronously();
+				Logout().Wait();
 				throw;
 			}
 		}
